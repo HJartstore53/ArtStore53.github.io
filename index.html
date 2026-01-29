@@ -643,11 +643,11 @@ footer.active{
     <span class="close" onclick="closeDiariesPopup()">×</span>
     <h2>Choose Diary Type</h2>
     <div class="subcards">
-      <div class="card" onclick="openBrandPopup('jb','arabic-diaries.html')">
+      <div class="card" onclick="goToPage('arabic-diaries.html')">
   <span>📖</span>
   <h3>Arabic Diaries</h3>
 </div>
-      <div class="card" onclick="openBrandPopup('hz','aesthetic-diaries.html')">
+      <div class="card"  onclick="goToPage('aesthetic-diaries.html')">
         <span>🖌️</span>
         <h3>Aesthetic Diaries</h3>
       </div>
@@ -679,24 +679,6 @@ footer.active{
 
 
 
-<div class="popup-overlay" id="brand-popup">
-  <div class="popup">
-    <span class="close" onclick="closeBrandPopup()">×</span>
-    <img id="brand-logo" src="" alt="" style="width:80px;height:80px;border-radius:50%;border:3px solid var(--accent);margin-bottom:.5rem;">
-    <h2 id="brand-title"></h2>
-    <p id="brand-desc"></p>
-  </div>
-</div>
-
-
-
-    <div class="popup-overlay" id="popup">
-  <div class="popup">
-    <span class="close" onclick="closePopup()">×</span>
-    <h2 id="popup-title"></h2>
-    <p id="popup-desc"></p>
-  </div>
-</div>
 
 </section>
 
@@ -803,14 +785,10 @@ function openBrandPopup(brand,page){
     logo.src = "asset/jb logo 5_page-0001.jpg"; // hz.creativity logo
   }
 
-  popup.style.display='flex';
+  popup.style.display='flex';}
 
-  // After 2 seconds, redirect to page
-  setTimeout(()=>{ window.location = page; }, 0);
-}
-
-function closeBrandPopup(){
-  document.getElementById('brand-popup').style.display='none';
+  function goToPage(page){
+  window.location.href = page;
 }
 
 // Click outside to close
