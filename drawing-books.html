@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Drawing Books</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body{
+      margin:0;
+      font-family:Poppins, sans-serif;
+      background:linear-gradient(180deg,#f7ecd4,#f1deb3);
+      color:#3b2f2f;
+    }
+
+    h1{
+      text-align:center;
+      padding:2rem 1rem 1rem;
+      font-family:Playfair Display, serif;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+      gap:1.2rem;
+      padding:1.5rem;
+    }
+
+    .card{
+      background:#fff7e6;
+      border-radius:20px;
+      padding:1rem;
+      text-align:center;
+      box-shadow:0 10px 25px rgba(0,0,0,.08);
+      transition:.3s;
+      cursor:pointer;
+    }
+
+    .card:hover{
+      transform:translateY(-6px) scale(1.02);
+    }
+
+    .card img{
+      width:100%;
+      border-radius:15px;
+      margin-bottom:.6rem;
+    }
+
+    footer{
+  background:#3b2f2f;
+  color:#fff;
+  padding:1.5rem;
+  text-align:center;
+  font-size:.85rem;
+  margin-top:2rem;
+}
+
+.dm-btn{
+  display:inline-block;
+  margin-top:.8rem;
+  padding:.55rem 1.2rem;
+  border-radius:50px;
+  border:2px solid #c89b3c;
+  color:#3b2f2f;
+  text-decoration:none;
+  font-size:.85rem;
+  font-weight:500;
+  transition:.3s ease;
+}
+
+.dm-btn:hover{
+  background:#c89b3c;
+  color:#fff;
+  transform:scale(1.05);
+}
+
+.slider{
+  position:relative;
+  overflow:hidden;
+  border-radius:15px;
+}
+
+.slide{
+  width:100%;
+  display:none;
+  border-radius:15px;
+}
+
+.slide.active{
+  display:block;
+}
+
+.nav{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  background:rgba(0,0,0,.4);
+  color:#fff;
+  border:none;
+  width:32px;
+  height:32px;
+  border-radius:50%;
+  cursor:pointer;
+  font-size:18px;
+}
+
+.nav.prev{ left:10px; }
+.nav.next{ right:10px; }
+
+.nav:hover{
+  background:rgba(0,0,0,.6);
+}
+
+.dots{
+  display:flex;
+  justify-content:center;
+  gap:6px;
+  margin:8px 0;
+}
+
+.dot{
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  background:#d8caa3;
+  opacity:.5;
+  transition:.3s;
+}
+
+.dot.active{
+  background:#c89b3c;
+  opacity:1;
+}
+
+.slider{
+  touch-action: pan-y;
+}
+
+/* GLOBAL SCROLL EFFECT */
+.reveal{
+  opacity: 0;
+  transform: translateY(60px) scale(0.96);
+  transition: all 0.8s ease;
+}
+
+.reveal.active{
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+
+
+
+  </style>
+</head>
+
+<body>
+
+  <h1>Drawing Books</h1>
+
+  <div class="grid">
+    
+    <div class="card scroll-effect">
+
+  <div class="slider">
+    <img src="asset\WhatsApp Image 2026-01-29 at 12.23.57 AM.jpeg" class="slide active">
+    <img src="asset\jb logo 5_page-0001.jpg" class="slide">
+    <img src="asset\HZ LOGO copy_page-0001.jpg" class="slide">
+
+    <div class="dots">
+      <span class="dot active"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+    </div>
+  </div>
+
+  <h3>ا ب ت – Grow & Draw Book 🎨✨</h3>
+      <div>150₹</div>
+      <p>Size : A5 <br>
+Pages : 60</p>
+<a 
+  href="https://wa.me/917297812253?text=Hello%20I%20want%20to%20purchase%20this%20product"
+  class="dm-btn"
+  target="_blank">
+  DM to Purchase
+</a>
+
+</div>
+
+<div class="card scroll-effect">
+
+  <div class="slider">
+    <img src="asset\WhatsApp Image 2026-01-29 at 12.23.57 AM.jpeg" class="slide active">
+    <img src="asset\jb logo 5_page-0001.jpg" class="slide">
+    <img src="asset\HZ LOGO copy_page-0001.jpg" class="slide">
+
+    <div class="dots">
+      <span class="dot active"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+    </div>
+  </div>
+
+        <h3></h3>
+      <div>150₹</div>
+      <p>Size : A5 <br>
+Pages : 60</p>
+<a 
+  href="https://wa.me/917297812253?text=Hello%20I%20want%20to%20purchase%20this%20product"
+  class="dm-btn"
+  target="_blank">
+  DM to Purchase
+</a>
+
+</div>
+
+<div class="card scroll-effect">
+
+  <div class="slider">
+    <img src="asset\WhatsApp Image 2026-01-29 at 12.23.57 AM.jpeg" class="slide active">
+    <img src="asset\jb logo 5_page-0001.jpg" class="slide">
+    <img src="asset\HZ LOGO copy_page-0001.jpg" class="slide">
+
+    <div class="dots">
+      <span class="dot active"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+    </div>
+  </div>
+
+        <h3>Little Creatures Drawing Book 🐝🦋🎨</h3>
+      <div>150₹</div>
+      <p>Size : A5 <br>
+Pages : 60</p>
+<a 
+  href="https://wa.me/919358437253?text=Hello%20I%20want%20to%20purchase%20this%20product"
+  class="dm-btn"
+  target="_blank">
+  DM to Purchase
+</a>
+
+</div>
+
+<div class="card scroll-effect">
+
+  <div class="slider">
+    <img src="asset\WhatsApp Image 2026-01-29 at 12.23.57 AM.jpeg" class="slide active">
+    <img src="asset\jb logo 5_page-0001.jpg" class="slide">
+    <img src="asset\HZ LOGO copy_page-0001.jpg" class="slide">
+
+    <div class="dots">
+      <span class="dot active"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+    </div>
+  </div>
+
+        <h3>Cloud Hop Drawing Book ☁️🐰🖍️🌈</h3>
+      <div>150₹</div>
+      <p>Size : A5 <br>
+Pages : 60</p>
+<a 
+  href="https://wa.me/919358437253?text=Hello%20I%20want%20to%20purchase%20this%20product"
+  class="dm-btn"
+  target="_blank">
+  DM to Purchase
+</a>
+
+</div>
+
+
+
+
+   
+
+</div>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  
+
+  
+  <footer>
+© 2026 HJ-Artstore • Crafted with love • DM for queries
+</footer>
+
+<script>
+function showSlide(slider, index){
+  const slides = slider.querySelectorAll('.slide');
+  const dots = slider.querySelectorAll('.dot');
+
+  slides.forEach(s => s.classList.remove('active'));
+  dots.forEach(d => d.classList.remove('active'));
+
+  slides[index].classList.add('active');
+  dots[index].classList.add('active');
+}
+
+document.querySelectorAll('.slider').forEach(slider => {
+  let index = 0;
+  const slides = slider.querySelectorAll('.slide');
+
+  slider.querySelectorAll('.dot').forEach((dot, i) => {
+    dot.addEventListener('click', () => {
+      index = i;
+      showSlide(slider, index);
+    });
+  });
+});
+</script>
+
+<script>
+const revealElements = document.querySelectorAll('.reveal');
+
+function revealOnScroll(){
+  revealElements.forEach(el => {
+    const elementTop = el.getBoundingClientRect().top;
+    const revealPoint = window.innerHeight - 80;
+
+    if(elementTop < revealPoint){
+      el.classList.add('active');
+    } else {
+      el.classList.remove('active');
+    }
+  });
+}
+
+window.addEventListener('scroll', revealOnScroll);
+window.addEventListener('load', revealOnScroll);
+</script>
+
+</body>
+</html>

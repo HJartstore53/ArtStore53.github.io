@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aesthetic diaries - hz.creativity <hz class="creativity"></hz></title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    :root{--bg:#f4e6c9;--dark:#3b2f2f;--accent:#c89b3c;--card:#fff7e6}
+    body{margin:0;font-family:Poppins,sans-serif;background:linear-gradient(180deg,#f7ecd4,#f1deb3);color:var(--dark);}
+    .card{background:var(--card);border-radius:20px;padding:1.5rem 1rem;text-align:center;box-shadow:0 10px 25px rgba(0,0,0,.08);transition:.3s;cursor:pointer;}
+    .card:hover{transform:translateY(-6px) scale(1.02);box-shadow:0 18px 35px rgba(0,0,0,.25);}
+    .popup-overlay{position:fixed;inset:0;background:rgba(0,0,0,.6);display:flex;align-items:center;justify-content:center;z-index:999;}
+    .popup{background:var(--card);padding:2rem;border-radius:20px;max-width:420px;width:90%;text-align:center;animation:scaleIn .3s ease;}
+    .popup h2{font-family:Playfair Display, serif;margin-bottom:.6rem;}
+    .popup p{font-size:.95rem;opacity:.85;}
+    .close{position:absolute;top:15px;right:20px;font-size:1.5rem;cursor:pointer;}
+    @keyframes scaleIn{from{transform:scale(.8);opacity:0}to{transform:scale(1);opacity:1}}
+    footer{background:#3b2f2f;color:#fff;padding:1.5rem;text-align:center;font-size:.85rem;margin-top:3rem;}
+
+ .popup-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.6);
+  display: flex;         /* initially hidden via JS */
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.popup {
+  background: #fff7e6;
+  padding: 2rem;
+  border-radius: 20px;
+  max-width: 400px;
+  width: 90%;
+  text-align: center;
+  position: relative;
+  animation: scaleIn .3s ease;
+}
+
+.close {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+@keyframes scaleIn {
+  from { transform: scale(.8); opacity: 0; }
+  to   { transform: scale(1); opacity: 1; }
+}
+
+.dm-btn{
+  display: inline-block;
+  margin-top: .8rem;
+  padding: .55rem 1.2rem;
+  border-radius: 50px;
+  border: 2px solid var(--accent);
+  color: var(--dark);
+  text-decoration: none;
+  font-size: .85rem;
+  font-weight: 500;
+  transition: .3s ease;
+}
+
+.dm-btn:hover{
+  background: var(--accent);
+  color: #fff;
+  transform: scale(1.05);
+}
+
+
+/* GLOBAL SCROLL EFFECT */
+.reveal{
+  opacity: 0;
+  transform: translateY(60px) scale(0.96);
+  transition: all 0.8s ease;
+}
+
+.reveal.active{
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+
+  </style>
+</head>
+<body>
+
+<!-- Popup -->
+<div class="popup-overlay" id="popup">
+  <div class="popup">
+    <!-- ❌ Close button -->
+    <span class="close" onclick="closePopup()">×</span>
+
+    <!-- Logo -->
+    <img src="asset\HZ LOGO copy_page-0001.jpg" alt="hz.creativity" style="width:80px;height:80px;border-radius:50%;border:3px solid #c89b3c;margin-bottom:.5rem;">
+
+    <!-- Title & description -->
+    <h2>Made by hz.creativity</h2>
+    <p>An artist crafting thoughtful designs that blend creativity with everyday life</p>
+  </div>
+</div>
+
+<h1 style="text-align:center;margin-top:2rem;">Aesthetic Diaries</h1>
+
+<div class="grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1rem;padding:2rem 1.5rem;">
+  <div class="card">
+    <img src="asset\WhatsApp Image 2026-01-29 at 12.23.57 AM.jpeg" alt="Aesthetic Diary 1" style="width:100%;border-radius:30px;margin-bottom:20px;">
+   <h3>1. Avocado Vibes Diary 🥑✨</h3><br>
+    <div>150₹</div>
+     <div>
+       Ruled paper <br>
+       Size : B6 <br>
+       pages : 100 
+     </div> 
+    <a 
+  href="https://wa.me/919358437253?text=Hello%20I%20want%20to%20purchase%20this%20product"
+  class="dm-btn"
+  target="_blank">
+  DM to Purchase
+</a>
+  </div>
+
+   <div class="card">
+    <img src="" alt="Aesthetic Diary 1" style="width:100%;border-radius:30px;margin-bottom:20px;">
+    <h3></h3>2. Blue Heart Dreams Diary </h3> 💙<br>
+    <div>150₹</div>
+     <div>
+       Ruled paper <br>
+       Size : B6 <br>
+       pages : 100 
+     </div> 
+    <a 
+  href="https://wa.me/919358437253?text=Hello%20I%20want%20to%20purchase%20this%20product"
+  class="dm-btn"
+  target="_blank">
+  DM to Purchase
+</a>
+  </div>
+
+   <div class="card">
+    <img src="" alt="Aesthetic Diary 1" style="width:100%;border-radius:30px;margin-bottom:20px;">
+   <h3>3. Coffee & Chaos Diary ☕🖤</h3><br>
+    <div>150₹</div>
+     <div>
+       Ruled paper <br>
+       Size : B6 <br>
+       pages : 100 
+     </div> 
+    <a 
+  href="https://wa.me/919358437253?text=Hello%20I%20want%20to%20purchase%20this%20product"
+  class="dm-btn"
+  target="_blank">
+  DM to Purchase
+</a>
+  </div>
+
+  <div class="card">
+    <img src="" alt="Aesthetic Diary 1" style="width:100%;border-radius:30px;margin-bottom:20px;">
+    <h3>4. Modern Muse Diary ✍️ </h3><br>
+    <div>150₹</div>
+     <div>
+       Ruled paper <br>
+       Size : B6 <br>
+       pages : 100 
+     </div> 
+    <a 
+  href="https://wa.me/919358437253?text=Hello%20I%20want%20to%20purchase%20this%20product"
+  class="dm-btn"
+  target="_blank">
+  DM to Purchase
+</a>
+  </div> 
+  
+  <div class="card">
+    <img src="" alt="Aesthetic Diary 1" style="width:100%;border-radius:30px;margin-bottom:20px;">
+    <h3>5. Earthy Brown Aesthetic Diary 🤎 </h3><br>
+    <div>150₹</div>
+     <div>
+       Ruled paper <br>
+       Size : B6 <br>
+       pages : 100 
+     </div> 
+    <a 
+  href="https://wa.me/919358437253?text=Hello%20I%20want%20to%20purchase%20this%20product"
+  class="dm-btn"
+  target="_blank">
+  DM to Purchase
+</a>
+  </div> 
+  
+  <div class="card">
+    <img src="" alt="Aesthetic Diary 1" style="width:100%;border-radius:30px;margin-bottom:20px;">
+    <h3>6. Hello 2026 Diary ✨📅</h3><br>
+    <div>150₹</div>
+     <div>
+       Ruled paper <br>
+       Size : B6 <br>
+       pages : 100 
+     </div> 
+    <a 
+  href="https://wa.me/919358437253?text=Hello%20I%20want%20to%20purchase%20this%20product"
+  class="dm-btn"
+  target="_blank">
+  DM to Purchase
+</a>
+  </div> 
+  
+  <div class="card">
+    <img src="" alt="Aesthetic Diary 1" style="width:100%;border-radius:30px;margin-bottom:20px;">
+    <h3>7. Cherry On Top Moments Diary 🍒 </h3><br>
+    <div>150₹</div>
+     <div>
+       Ruled paper <br>
+       Size : B6 <br>
+       pages : 100 
+     </div> 
+    <a 
+  href="https://wa.me/919358437253?text=Hello%20I%20want%20to%20purchase%20this%20product"
+  class="dm-btn"
+  target="_blank">
+  DM to Purchase
+</a>
+  </div> 
+  
+  <div class="card">
+    <img src="" alt="Aesthetic Diary 1" style="width:100%;border-radius:30px;margin-bottom:20px;">
+    <h3>8. Burnt Orange Vintage Diary 🧡</h3><br>
+    <div>150₹</div>
+     <div>
+       Ruled paper <br>
+       Size : B6 <br>
+       pages : 100 
+     </div> 
+    <a 
+  href="https://wa.me/919358437253?text=Hello%20I%20want%20to%20purchase%20this%20product"
+  class="dm-btn"
+  target="_blank">
+  DM to Purchase
+</a>
+  </div> 
+  
+  <div class="card">
+    <img src="" alt="Aesthetic Diary 1" style="width:100%;border-radius:30px;margin-bottom:20px;">
+    <h3>9. Green Zen Modern Diary 🌿</h3><br>
+    <div>150₹</div>
+     <div>
+       Ruled paper <br>
+       Size : B6 <br>
+       pages : 100 
+     </div> 
+    <a 
+  href="https://wa.me/919358437253?text=Hello%20I%20want%20to%20purchase%20this%20product"
+  class="dm-btn"
+  target="_blank">
+  DM to Purchase
+</a>
+  </div> 
+  
+  <div class="card">
+    <img src="" alt="Aesthetic Diary 1" style="width:100%;border-radius:30px;margin-bottom:20px;">
+    <h3>10. Honeybee Hustle Diary 🐝🍯</h3><br>
+    <div>150₹</div>
+     <div>
+       Ruled paper <br>
+       Size : B6 <br>
+       pages : 100 
+     </div> 
+    <a 
+  href="https://wa.me/919358437253?text=Hello%20I%20want%20to%20purchase%20this%20product"
+  class="dm-btn"
+  target="_blank">
+  DM to Purchase
+</a>
+  </div> 
+  
+  <div class="card">
+    <img src="" alt="Aesthetic Diary 1" style="width:100%;border-radius:30px;margin-bottom:20px;">
+    <h3>11.	Modern Vintage Soul Diary 🕰️✨</h3><br>
+    <div>150₹</div>
+     <div>
+       Ruled paper <br>
+       Size : B6 <br>
+       pages : 100 
+     </div> 
+    <a 
+  href="https://wa.me/919358437253?text=Hello%20I%20want%20to%20purchase%20this%20product"
+  class="dm-btn"
+  target="_blank">
+  DM to Purchase
+</a>
+  </div>
+    
+    
+    <div class="card">
+    <img src="" alt="Aesthetic Diary 1" style="width:100%;border-radius:30px;margin-bottom:20px;">
+    <h3>12.	Bloom & Grace Floral Diary 🌸</h3><br>
+    <div>150₹</div>
+     <div>
+       Ruled paper <br>
+       Size : B6 <br>
+       pages : 100 
+     </div> 
+    <a 
+  href="https://wa.me/919358437253?text=Hello%20I%20want%20to%20purchase%20this%20product"
+  class="dm-btn"
+  target="_blank">
+  DM to Purchase
+</a>
+</div>
+     
+    
+    <div class="card">
+    <img src="" alt="Aesthetic Diary 1" style="width:100%;border-radius:30px;margin-bottom:20px;">
+    <h3>13.	Aesthetic Modern Mood Diary 🤍✨</h3><br>
+    <div>150₹</div>
+     <div>
+       Ruled paper <br>
+       Size : B6 <br>
+       pages : 100 
+     </div> 
+    <a 
+  href="https://wa.me/919358437253?text=Hello%20I%20want%20to%20purchase%20this%20product"
+  class="dm-btn"
+  target="_blank">
+  DM to Purchase
+</a>
+  </div>
+
+
+</div>
+
+  <div>
+
+  <!-- Add as many as you want -->
+</div>
+
+<footer>© 2026 HJ-Artstore • Crafted with love • DM for queries</footer>
+
+<script>
+function closePopup(){document.getElementById('popup').style.display='none';}
+window.onload = () => {document.getElementById('popup').style.display='flex';}
+</script>
+<script>
+// Show popup on page load
+window.onload = function() {
+  document.getElementById('popup').style.display = 'flex';
+}
+
+// Close popup function
+function closePopup() {
+  document.getElementById('popup').style.display = 'none';
+}
+
+// Click outside popup to close
+document.getElementById('popup').addEventListener('click', function(e) {
+  if (e.target === this) {
+    closePopup();
+  }
+});
+</script>
+
+<script>
+const revealElements = document.querySelectorAll('.reveal');
+
+function revealOnScroll(){
+  revealElements.forEach(el => {
+    const elementTop = el.getBoundingClientRect().top;
+    const revealPoint = window.innerHeight - 80;
+
+    if(elementTop < revealPoint){
+      el.classList.add('active');
+    } else {
+      el.classList.remove('active');
+    }
+  });
+}
+
+window.addEventListener('scroll', revealOnScroll);
+window.addEventListener('load', revealOnScroll);
+</script>
+
+</body>
+</html>
