@@ -145,10 +145,7 @@
 
 .reveal.active{
   opacity: 1;
-  transform: translateY(0) scale(1);
-}
-
-
+  transform: translateY(0) scale(1);}
 
 
   </style>
@@ -159,20 +156,22 @@
   <h1>Drawing Books</h1>
 
   <div class="grid">
-    
-    <div class="card scroll-effect">
 
+  <div class="card scroll-effect">
   <div class="slider">
-    <img src="asset\WhatsApp Image 2026-01-29 at 12.23.57 AM.jpeg" class="slide active">
-    <img src="asset\jb logo 5_page-0001.jpg" class="slide">
-    <img src="asset\HZ LOGO copy_page-0001.jpg" class="slide">
+  <img src="" class="slide active">
+  <img src="" class="slide">
+  <img src="" class="slide">
 
-    <div class="dots">
-      <span class="dot active"></span>
-      <span class="dot"></span>
-      <span class="dot"></span>
-    </div>
+  <button class="nav prev">‹</button>
+  <button class="nav next">›</button>
+
+  <div class="dots">
+    <span class="dot active"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
   </div>
+</div>
 
   <h3>ا ب ت – Grow & Draw Book 🎨✨</h3>
       <div>150₹</div>
@@ -188,20 +187,22 @@ Pages : 60</p>
 </div>
 
 <div class="card scroll-effect">
+<div class="slider">
+  <img src="drawing books\WhatsApp Image 2026-01-29 at 10.50.57 PM 1.jpeg" class="slide active">
+  <img src="" class="slide">
+  <img src="" class="slide">
 
-  <div class="slider">
-    <img src="asset\WhatsApp Image 2026-01-29 at 12.23.57 AM.jpeg" class="slide active">
-    <img src="asset\jb logo 5_page-0001.jpg" class="slide">
-    <img src="asset\HZ LOGO copy_page-0001.jpg" class="slide">
+  <button class="nav prev">‹</button>
+  <button class="nav next">›</button>
 
-    <div class="dots">
-      <span class="dot active"></span>
-      <span class="dot"></span>
-      <span class="dot"></span>
-    </div>
+  <div class="dots">
+    <span class="dot active"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
   </div>
+</div>
 
-        <h3></h3>
+        <h3>١٢٣ Grow & Draw ✏️🔢⭐</h3>
       <div>150₹</div>
       <p>Size : A5 <br>
 Pages : 60</p>
@@ -217,16 +218,19 @@ Pages : 60</p>
 <div class="card scroll-effect">
 
   <div class="slider">
-    <img src="asset\WhatsApp Image 2026-01-29 at 12.23.57 AM.jpeg" class="slide active">
-    <img src="asset\jb logo 5_page-0001.jpg" class="slide">
-    <img src="asset\HZ LOGO copy_page-0001.jpg" class="slide">
+    <img src="drawing books\WhatsApp Image 2026-01-29 at 10.52.39 PM 3.jpeg" class="slide active">
+    <img src="" class="slide">
+    <img src="" class="slide">
 
-    <div class="dots">
-      <span class="dot active"></span>
-      <span class="dot"></span>
-      <span class="dot"></span>
-    </div>
+     <button class="nav prev">‹</button>
+  <button class="nav next">›</button>
+
+  <div class="dots">
+    <span class="dot active"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
   </div>
+</div>
 
         <h3>Little Creatures Drawing Book 🐝🦋🎨</h3>
       <div>150₹</div>
@@ -244,16 +248,19 @@ Pages : 60</p>
 <div class="card scroll-effect">
 
   <div class="slider">
-    <img src="asset\WhatsApp Image 2026-01-29 at 12.23.57 AM.jpeg" class="slide active">
-    <img src="asset\jb logo 5_page-0001.jpg" class="slide">
-    <img src="asset\HZ LOGO copy_page-0001.jpg" class="slide">
+    <img src="drawing books\WhatsApp Image 2026-01-29 at 10.51.36 PM 2.jpeg" class="slide active">
+    <img src="" class="slide">
+    <img src="" class="slide">
 
-    <div class="dots">
-      <span class="dot active"></span>
-      <span class="dot"></span>
-      <span class="dot"></span>
-    </div>
+     <button class="nav prev">‹</button>
+  <button class="nav next">›</button>
+
+  <div class="dots">
+    <span class="dot active"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
   </div>
+</div>
 
         <h3>Cloud Hop Drawing Book ☁️🐰🖍️🌈</h3>
       <div>150₹</div>
@@ -292,29 +299,53 @@ Pages : 60</p>
 </footer>
 
 <script>
-function showSlide(slider, index){
+document.querySelectorAll('.slider').forEach(slider => {
   const slides = slider.querySelectorAll('.slide');
   const dots = slider.querySelectorAll('.dot');
+  const prevBtn = slider.querySelector('.prev');
+  const nextBtn = slider.querySelector('.next');
 
-  slides.forEach(s => s.classList.remove('active'));
-  dots.forEach(d => d.classList.remove('active'));
-
-  slides[index].classList.add('active');
-  dots[index].classList.add('active');
-}
-
-document.querySelectorAll('.slider').forEach(slider => {
   let index = 0;
-  const slides = slider.querySelectorAll('.slide');
 
-  slider.querySelectorAll('.dot').forEach((dot, i) => {
+  function showSlide(i){
+    slides.forEach(s => s.classList.remove('active'));
+    dots.forEach(d => d.classList.remove('active'));
+
+    slides[i].classList.add('active');
+    dots[i].classList.add('active');
+  }
+
+  nextBtn.addEventListener('click', () => {
+    index = (index + 1) % slides.length;
+    showSlide(index);
+  });
+
+  prevBtn.addEventListener('click', () => {
+    index = (index - 1 + slides.length) % slides.length;
+    showSlide(index);
+  });
+
+  dots.forEach((dot, i) => {
     dot.addEventListener('click', () => {
       index = i;
-      showSlide(slider, index);
+      showSlide(index);
     });
+  });
+
+  /* TOUCH SWIPE */
+  let startX = 0;
+  slider.addEventListener('touchstart', e => {
+    startX = e.touches[0].clientX;
+  });
+
+  slider.addEventListener('touchend', e => {
+    const diff = startX - e.changedTouches[0].clientX;
+    if(diff > 50) nextBtn.click();
+    if(diff < -50) prevBtn.click();
   });
 });
 </script>
+
 
 <script>
 const revealElements = document.querySelectorAll('.reveal');

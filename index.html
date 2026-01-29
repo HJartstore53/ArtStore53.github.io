@@ -434,7 +434,55 @@ button:active::after{
   height:200px;
 }
 
+.brand-popup{
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
 
+.brand-box{
+  background: var(--card);
+  padding: 2rem 1.6rem;
+  border-radius: 22px;
+  width: 90%;
+  max-width: 340px;
+  text-align: center;
+  position: relative;
+  animation: popupIn .25s ease;
+}
+
+.brand-box img{
+  width: 80px;
+  margin-bottom: .8rem;
+}
+
+.brand-box h3{
+  margin: .4rem 0;
+  font-family: "Playfair Display", serif;
+}
+
+.brand-box p{
+  font-size: .9rem;
+  opacity: .85;
+  line-height: 1.5;
+}
+
+.close-btn{
+  position: absolute;
+  top: 10px;
+  right: 14px;
+  font-size: 1.4rem;
+  cursor: pointer;
+}
+
+@keyframes popupIn{
+  from{ transform: scale(.85); opacity: 0; }
+  to{ transform: scale(1); opacity: 1; }
+}
 
 
 
@@ -511,38 +559,15 @@ button:active::after{
 
 section:nth-child(odd){
   background: linear-gradient(135deg,#f7ecd4,#f1deb3);
+  
 }
 
 section:nth-child(even){
   background: linear-gradient(135deg,#f1deb3,#f4e6c9);
 }
 
-body{
-  cursor: none;
-}
 
-.cursor{
-  width:20px;
-  height:20px;
-  border:2px solid #c89b3c;
-  border-radius:50%;
-  position:fixed;
-  pointer-events:none;
-  transform:translate(-50%,-50%);
-  transition: width .2s, height .2s, background .2s;
-  z-index:9999;
-}
 
-footer{
-  opacity:0;
-  transform:translateY(60px);
-  transition:0.8s ease;
-}
-
-footer.active{
-  opacity:1;
-  transform:translateY(0);
-}
 
 .reveal{
   opacity:0;
@@ -555,6 +580,11 @@ footer.active{
   transform:none;
 }
 
+footer{
+  opacity: 1 !important;
+  transform: none !important;
+  animation: none !important;
+}
 
   </style>
 </head>
@@ -562,7 +592,6 @@ footer.active{
 <header>
      <div id="progress"></div>
 
-<div class="cursor"></div>
 
 
 <section id="brand-details" class="brand-details hidden">
@@ -579,7 +608,7 @@ footer.active{
 
     <div class="artist">
       <img src="asset\jb logo 5_page-0001.jpg"  alt="jb.khatt"
-     onclick="openPopup('jb')" />
+     onclick="openBrandPopup('jb')">
       <p>jb.khatt</p>
       <div class="socials">
         <a href="https://instagram.com/jb.khatt" target="_blank">
@@ -595,7 +624,7 @@ footer.active{
 
     <div class="artist">
       <img src="asset\HZ LOGO copy_page-0001.jpg"    alt="hz.creativity"
-     onclick="openPopup('hz')" />
+     onclick="openBrandPopup('hz')">
       <p>hz.creativity</p>
       <div class="socials">
         <a href="https://instagram.com/hz.creativity" target="_blank">
@@ -609,6 +638,17 @@ footer.active{
     </div>
 
   </div>
+  <!-- Brand Popup -->
+<div id="brandPopup" class="brand-popup">
+  <div class="brand-box">
+    <span class="close-btn" onclick="closeBrand()">×</span>
+
+    <img id="brandLogo" src="" alt="Brand logo">
+    <h3 id="brandTitle"></h3>
+    <p id="brandDesc"></p>
+  </div>
+</div>
+
 
   <div class="scroll-indicator">↓</div>
 </header>
@@ -713,36 +753,6 @@ footer.active{
     section.scrollIntoView({ behavior: "smooth" });
   }
 
-  function openPopup(brand){
-    const popup = document.getElementById("popup");
-    const title = document.getElementById("popup-title");
-    const desc = document.getElementById("popup-desc");
-
-    if(brand === "jb"){
-      title.innerText = "jb.khatt";
-      desc.innerText =
-        "jb.khatt specializes in handcrafted calligraphic art ";
-    }
-
-    if(brand === "hz"){
-      title.innerText = "hz.creativity";
-      desc.innerText =
-        "hz.creativity explores artistic expression through hand paintings and graphic desingning";
-    }
-
-    popup.style.display = "flex";
-  }
-
-  function closePopup(){
-    document.getElementById("popup").style.display = "none";
-  }
-
-  // Close popup when clicking outside
-  document.getElementById("popup").addEventListener("click", function(e){
-    if(e.target === this){
-      closePopup();
-    }
-  });
 
 </script>
 <script>
@@ -841,45 +851,34 @@ window.addEventListener('load', () => {
     window.addEventListener('load', () => {
   document.querySelector('header').classList.add('loaded');
 });
-
 </script>
-
 <script>
-    const cursor = document.querySelector('.cursor');
-document.addEventListener('mousemove', e => {
-  cursor.style.left = e.clientX + 'px';
-  cursor.style.top = e.clientY + 'px';
-});
+function openBrandPopup(brand){
+  console.log("clicked", brand);
 
-document.querySelectorAll('.card').forEach(c => {
-  c.addEventListener('mouseenter', () => {
-    cursor.style.width = '40px';
-    cursor.style.height = '40px';
-    cursor.style.background = 'rgba(200,155,60,0.2)';
-  });
-  c.addEventListener('mouseleave', () => {
-    cursor.style.width = '20px';
-    cursor.style.height = '20px';
-    cursor.style.background = 'transparent';
-  });
-});
+  const popup = document.getElementById('brandPopup');
+  const logo  = document.getElementById('brandLogo');
+  const title = document.getElementById('brandTitle');
+  const desc  = document.getElementById('brandDesc');
 
-</script>
-
-<script>
-    const footer = document.querySelector('footer');
-window.addEventListener('scroll', () => {
-  if(footer.getBoundingClientRect().top < window.innerHeight - 100){
-    footer.classList.add('active');
-  } else {
-    footer.classList.remove('active');
+  if(brand === 'jb'){
+    logo.src = 'asset/jb logo 5_page-0001.jpg';
+    title.textContent = 'jb.khatt';
+    desc.textContent = 'Arabic calligraphy artist creating handcrafted Arabic diaries.';
   }
-});
 
-</script>
+  if(brand === 'hz'){
+    logo.src = 'asset/HZ LOGO copy_page-0001.jpg';
+    title.textContent = 'hz.creativity';
+    desc.textContent = 'Aesthetic diary designer focused on minimal layouts. also Graphic designer';
+  }
 
-<script>
-    
+  popup.style.display = 'flex';
+}
+
+function closeBrand(){
+  document.getElementById('brandPopup').style.display = 'none';
+}
 </script>
 </body>
 </html>
