@@ -103,6 +103,46 @@
   transform: translateY(0) scale(1);
 }
 
+.img-popup-overlay{
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.8);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+}
+
+.img-popup{
+  position: relative;
+  max-width: 90%;
+  max-height: 90%;
+  animation: scaleIn .3s ease;
+}
+
+.img-popup img{
+  width: 100%;
+  height: auto;
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+}
+
+.img-close{
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background: #fff;
+  color: #000;
+  font-size: 24px;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-weight: bold;
+}
 
   </style>
 </head>
@@ -128,7 +168,7 @@
 <div class="grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1rem;padding:2rem 1.5rem;">
 
   <div class="card">
-    <img src="asthetic diaries\quote diary copy.jpg.jpeg" alt="Aesthetic Diary 1" style="width:100%;border-radius:30px;margin-bottom:20px;">
+    <img src="asthetic diaries\quote diary copy.jpg.jpeg" alt="Aesthetic Diary 1"   onclick="openImgPopup(this.src)" style="width:100%;border-radius:30px;margin-bottom:20px;">
     <h3>1.From Dreams to Achievements Diary 🌙➡️🏆 </h3><br>
     <div>150₹</div>
      <div>
@@ -146,7 +186,7 @@
   
 
    <div class="card">
-    <img src="asthetic diaries\heart diary.jpg.jpeg" alt="Aesthetic Diary 1" style="width:100%;border-radius:30px;margin-bottom:20px;">
+    <img src="asthetic diaries\heart diary.jpg.jpeg" alt="Aesthetic Diary 1" style="width:100%;border-radius:30px;margin-bottom:20px;"onclick="openImgPopup(this.src)">
     <h3>2. Blue Heart Dreams Diary </h3> 💙<br>
     <div>150₹</div>
      <div>
@@ -163,7 +203,7 @@
   </div>
 
    <div class="card">
-    <img src="asthetic diaries\coffee diary copy.jpg.jpeg" alt="Aesthetic Diary 1" style="width:100%;border-radius:30px;margin-bottom:20px;">
+    <img src="asthetic diaries\coffee diary copy.jpg.jpeg" alt="Aesthetic Diary 1" style="width:100%;border-radius:30px;margin-bottom:20px;"onclick="openImgPopup(this.src)">
    <h3>3. Coffee & Chaos Diary ☕🖤</h3><br>
     <div>150₹</div>
      <div>
@@ -180,7 +220,7 @@
   </div>
 
   <div class="card">
-    <img src="asthetic diaries\browb boho diary.jpg.jpeg" alt="Aesthetic Diary 1" style="width:100%;border-radius:30px;margin-bottom:20px;">
+    <img src="asthetic diaries\browb boho diary.jpg.jpeg" alt="Aesthetic Diary 1" style="width:100%;border-radius:30px;margin-bottom:20px;"onclick="openImgPopup(this.src)">
     <h3>4. Modern Muse Diary ✍️ </h3><br>
     <div>150₹</div>
      <div>
@@ -197,7 +237,7 @@
   </div> 
   
   <div class="card">
-    <img src="asthetic diaries\brown aesthetic.jpg.jpeg" alt="Aesthetic Diary 1" style="width:100%;border-radius:30px;margin-bottom:20px;">
+    <img src="asthetic diaries\brown aesthetic.jpg.jpeg" alt="Aesthetic Diary 1" style="width:100%;border-radius:30px;margin-bottom:20px;"onclick="openImgPopup(this.src)">
     <h3>5. Earthy Brown Aesthetic Diary 🤎 </h3><br>
     <div>150₹</div>
      <div>
@@ -214,7 +254,7 @@
   </div> 
   
   <div class="card">
-    <img src="asthetic diaries\2026 diary.jpg.jpeg" alt="Aesthetic Diary 1" style="width:100%;border-radius:30px;margin-bottom:20px;">
+    <img src="asthetic diaries\2026 diary.jpg.jpeg" alt="Aesthetic Diary 1" style="width:100%;border-radius:30px;margin-bottom:20px;"onclick="openImgPopup(this.src)">
     <h3>6. Hello 2026 Diary ✨📅</h3><br>
     <div>150₹</div>
      <div>
@@ -231,7 +271,7 @@
   </div> 
   
   <div class="card">
-    <img src="asthetic diaries\cherry diary .jpg.jpeg" alt="Aesthetic Diary 1" style="width:100%;border-radius:30px;margin-bottom:20px;">
+    <img src="asthetic diaries\cherry diary .jpg.jpeg" alt="Aesthetic Diary 1" style="width:100%;border-radius:30px;margin-bottom:20px;"onclick="openImgPopup(this.src)">
     <h3>7. Cherry On Top Moments Diary 🍒 </h3><br>
     <div>150₹</div>
      <div>
@@ -248,7 +288,7 @@
   </div> 
   
   <div class="card">
-    <img src="asthetic diaries\orange diary .jpg.jpeg" alt="Aesthetic Diary 1" style="width:100%;border-radius:30px;margin-bottom:20px;">
+    <img src="asthetic diaries\orange diary .jpg.jpeg" alt="Aesthetic Diary 1" style="width:100%;border-radius:30px;margin-bottom:20px;"onclick="openImgPopup(this.src)">
     <h3>8. Burnt Orange Vintage Diary 🧡</h3><br>
     <div>150₹</div>
      <div>
@@ -265,7 +305,7 @@
   </div> 
   
   <div class="card">
-    <img src="asthetic diaries\green leaf.jpg.jpeg" alt="Aesthetic Diary 1" style="width:100%;border-radius:30px;margin-bottom:20px;">
+    <img src="asthetic diaries\green leaf.jpg.jpeg" alt="Aesthetic Diary 1" style="width:100%;border-radius:30px;margin-bottom:20px;"onclick="openImgPopup(this.src)">
     <h3>9. Green Zen Modern Diary 🌿</h3><br>
     <div>150₹</div>
      <div>
@@ -282,7 +322,7 @@
   </div> 
   
   <div class="card">
-    <img src="asthetic diaries\honey bee diary.jpg.jpeg" alt="Aesthetic Diary 1" style="width:100%;border-radius:30px;margin-bottom:20px;">
+    <img src="asthetic diaries\honey bee diary.jpg.jpeg" alt="Aesthetic Diary 1" style="width:100%;border-radius:30px;margin-bottom:20px;"onclick="openImgPopup(this.src)">
     <h3>10. Honeybee Hustle Diary 🐝🍯</h3><br>
     <div>150₹</div>
      <div>
@@ -299,7 +339,7 @@
   </div> 
   
   <div class="card">
-    <img src="asthetic diaries\white aesthetic.jpg.jpeg" alt="Aesthetic Diary 1" style="width:100%;border-radius:30px;margin-bottom:20px;">
+    <img src="asthetic diaries\white aesthetic.jpg.jpeg" alt="Aesthetic Diary 1" style="width:100%;border-radius:30px;margin-bottom:20px;"onclick="openImgPopup(this.src)">
     <h3>11.	Modern Vintage Soul Diary 🕰️✨</h3><br>
     <div>150₹</div>
      <div>
@@ -317,7 +357,7 @@
     
     
     <div class="card">
-    <img src="asthetic diaries\floral diary copy.jpg.jpeg" alt="Aesthetic Diary 1" style="width:100%;border-radius:30px;margin-bottom:20px;">
+    <img src="asthetic diaries\floral diary copy.jpg.jpeg" alt="Aesthetic Diary 1" style="width:100%;border-radius:30px;margin-bottom:20px;"onclick="openImgPopup(this.src)">
     <h3>12.	Bloom & Grace Floral Diary 🌸</h3><br>
     <div>150₹</div>
      <div>
@@ -334,7 +374,7 @@
 </div>
      
     <div class="card">
-    <img src="asthetic diaries\avacoda diary.jpg.jpeg" alt="Aesthetic Diary 1" style="width:100%;border-radius:30px;margin-bottom:20px;">
+    <img src="asthetic diaries\avacoda diary.jpg.jpeg" alt="Aesthetic Diary 1" style="width:100%;border-radius:30px;margin-bottom:20px;"onclick="openImgPopup(this.src)">
    <h3>13. Avocado Vibes Diary 🥑✨</h3><br>
     <div>150₹</div>
      <div>
@@ -350,7 +390,13 @@
 </a>
   </div>
     
-
+<!-- Image Preview Popup -->
+<div class="img-popup-overlay" id="imgPopup" onclick="closeImgPopup()">
+  <div class="img-popup">
+    <span class="img-close" onclick="closeImgPopup()">×</span>
+    <img id="popupImg" src="" alt="Preview">
+  </div>
+</div>
 
 </div>
 
@@ -403,6 +449,18 @@ function revealOnScroll(){
 window.addEventListener('scroll', revealOnScroll);
 window.addEventListener('load', revealOnScroll);
 </script>
+
+<script>
+function openImgPopup(src){
+  document.getElementById("popupImg").src = src;
+  document.getElementById("imgPopup").style.display = "flex";
+}
+
+function closeImgPopup(){
+  document.getElementById("imgPopup").style.display = "none";
+}
+</script>
+
 
 </body>
 </html>
