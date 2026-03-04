@@ -46,14 +46,7 @@
       margin-bottom:.6rem;
     }
 
-    footer{
-  background:#3b2f2f;
-  color:#fff;
-  padding:1.5rem;
-  text-align:center;
-  font-size:.85rem;
-  margin-top:2rem;
-}
+   
 
 .dm-btn{
   display:inline-block;
@@ -148,9 +141,370 @@
   transform: translateY(0) scale(1);
 }
 
+.cart-icon{
+  position:fixed;
+  top:20px;
+  right:20px;
+  font-size:22px;
+  cursor:pointer;
+  z-index:999;
+}
 
+#cart-count{
+  background:#c89b3c;
+  color:#fff;
+  font-size:12px;
+  padding:3px 7px;
+  border-radius:50%;
+  position:absolute;
+  top:-8px;
+  right:-12px;
+}
+
+.cart-btn{
+  position:relative;
+  display:inline-block;
+  padding:0.8rem 1.6rem;
+  border-radius:50px;
+  border:none;
+  background:#3b2f2f;
+  color:#fff;
+  font-weight:600;
+  overflow:hidden;
+  cursor:pointer;
+  transition:.3s ease;
+}
+
+.cart-btn::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:-100%;
+  width:100%;
+  height:100%;
+  background:linear-gradient(120deg,
+  transparent,
+  rgba(255,255,255,.4),
+  transparent);
+  transition:.6s;
+}
+
+.cart-btn:hover::before{
+  left:100%;
+}
+
+.cart-btn:hover{
+  background:#c89b3c;
+  transform:translateY(-2px);
+}
+
+.cart-drawer{
+  position:fixed;
+  right:-400px;
+  top:0;
+  width:350px;
+  height:100%;
+  background:#fff7e6;
+  box-shadow:-5px 0 20px rgba(0,0,0,.15);
+  transition:.4s ease;
+  z-index:1000;
+  padding:1rem;
+  overflow-y:auto;
+}
+
+.cart-drawer.active{
+  right:0;
+}
+
+.cart-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  font-weight:600;
+}
+
+.drawer-item{
+  display:flex;
+  gap:10px;
+  margin:1rem 0;
+  background:#fff;
+  padding:.5rem;
+  border-radius:15px;
+}
+
+.drawer-item img{
+  width:60px;
+  border-radius:10px;
+}
+
+.qty-control{
+  display:flex;
+  align-items:center;
+  gap:6px;
+  margin-top:5px;
+}
+
+.qty-control button{
+  border:none;
+  background:#c89b3c;
+  color:#fff;
+  padding:3px 8px;
+  border-radius:5px;
+  cursor:pointer;
+}
+
+.drawer-footer{
+  margin-top:1rem;
+}
+
+.checkout-btn{
+  width:100%;
+  padding:.7rem;
+  border:none;
+  border-radius:40px;
+  background:linear-gradient(135deg,#c89b3c,#a67c2e);
+  color:#fff;
+  font-weight:600;
+  cursor:pointer;
+}
+.bin-btn{
+  background:none;
+  border:none;
+  cursor:pointer;
+  margin-top:6px;
+  color:#a94442;
+  transition:.3s ease;
+}
+
+.bin-btn:hover{
+  transform:scale(1.2);
+  color:#c89b3c;
+}
+.art-footer{
+  position:relative;
+  background:#3b2f2f;
+  color:#fff;
+  padding:3rem 1rem;
+  text-align:center;
+  margin-top:3rem;
+  overflow:hidden;
+}
+
+/* Watercolor glow background */
+.art-footer::before{
+  content:"";
+  position:absolute;
+  width:100%;
+  height:100%;
+  background:
+  radial-gradient(circle at 15% 20%, rgba(200,155,60,.25), transparent 40%),
+  radial-gradient(circle at 85% 70%, rgba(255,255,255,.08), transparent 40%);
+  top:0;
+  left:0;
+  z-index:0;
+}
+
+.footer-content{
+  position:relative;
+  z-index:2;
+}
+
+/* Floating Base Style */
+.floating{
+  position:absolute;
+  font-size:26px;
+  opacity:.7;
+  animation:floatUp 12s linear infinite;
+}
+
+/* Different positions & delays */
+.art1{ left:10%; animation-delay:0s; }
+.art2{ left:30%; animation-delay:3s; }
+.art3{ left:50%; animation-delay:6s; }
+.art4{ left:70%; animation-delay:2s; }
+.art5{ left:85%; animation-delay:5s; }
+
+@keyframes floatUp{
+  0%{
+    transform:translateY(100px) rotate(0deg);
+    opacity:0;
+  }
+  20%{ opacity:.8; }
+  50%{ transform:translateY(-50px) rotate(10deg); }
+  100%{
+    transform:translateY(-200px) rotate(-10deg);
+    opacity:0;
+  }
+}
+
+/* Quote */
+.quote{
+  font-style:italic;
+  margin-bottom:1.5rem;
+  min-height:24px;
+  transition:opacity .5s ease;
+}
+
+.footer-links{
+  display:flex;
+  justify-content:center;
+  gap:18px;
+  flex-wrap:wrap;
+  margin-top:1rem;
+}
+
+.footer-links a{
+  position:relative;
+  padding:8px 16px;
+  border-radius:25px;
+  font-size:.85rem;
+  text-decoration:none;
+  color:#fff;
+  background:rgba(255,255,255,0.08);
+  backdrop-filter:blur(4px);
+  transition:all .3s ease;
+  overflow:hidden;
+}
+
+/* Soft glow hover */
+.footer-links a:hover{
+  background:#c89b3c;
+  color:#3b2f2f;
+  transform:translateY(-3px);
+  box-shadow:0 5px 15px rgba(200,155,60,.4);
+}
+
+/* Subtle shine effect */
+.footer-links a::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:-100%;
+  width:100%;
+  height:100%;
+  background:linear-gradient(
+    120deg,
+    transparent,
+    rgba(255,255,255,.4),
+    transparent
+  );
+  transition:.5s;
+}
+
+.footer-links a:hover::before{
+  left:100%;
+}
+/* ===== NAVBAR ===== */
+
+.navbar{
+  position:relative;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:15px 5%;
+  background:#3b2f2f;
+}
+
+/* Center container */
+.nav-center{
+  width:100%;
+  display:flex;
+  justify-content:center;
+}
+
+/* ===== SEARCH BAR ===== */
+
+.search-box{
+  position:relative;
+  width:40%;
+  min-width:250px;
+}
+
+.search-box input{
+  width:100%;
+  padding:12px 45px 12px 20px;
+  border-radius:30px;
+  border:2px solid #c89b3c;
+  outline:none;
+  font-size:.95rem;
+  background:#fdfaf4;
+  color:#3b2f2f;
+  transition:.3s ease;
+}
+
+/* Focus effect */
+.search-box input:focus{
+  box-shadow:0 0 12px rgba(200,155,60,.6);
+  border-color:#a67c2e;
+}
+
+/* Search icon */
+.search-box::after{
+  content:"🔍";
+  position:absolute;
+  right:18px;
+  top:50%;
+  transform:translateY(-50%);
+  font-size:17px;
+  color:#a67c2e;
+}
+
+/* ===== CART ICON ===== */
+
+.cart-icon{
+  position:absolute;
+  right:5%;
+  font-size:24px;
+  cursor:pointer;
+  color:white;
+}
+
+#cart-count{
+  position:absolute;
+  top:-8px;
+  right:-10px;
+  background:#c89b3c;
+  color:#3b2f2f;
+  font-size:11px;
+  padding:3px 6px;
+  border-radius:50%;
+}
+
+/* ===== RESPONSIVE ===== */
+
+@media (max-width:768px){
+
+  .search-box{
+    width:70%;
+  }
+
+}
+
+@media (max-width:480px){
+
+  .search-box{
+    width:90%;
+  }
+
+}
   </style>
 </head>
+<header>
+  <nav class="navbar">
+
+  <div class="nav-center">
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="Search your art... 🎨">
+    </div>
+  </div>
+
+  <div class="cart-icon" onclick="window.location.href='cart.html'">
+    🛒
+    <span id="cart-count">0</span>
+  </div>
+
+</nav>
+</header>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-G0GW0SNGTY"></script>
 <script>
@@ -168,7 +522,9 @@
   <div class="grid">
 
 
- <div class="card scroll-effect">
+ <div class="card scroll-effect"
+     data-name="🌙 My Ramadan Activity Kit ✨"
+     data-price="300₹">
 
   <div class="slider">
   <img src="combos\WhatsApp Image 2026-02-10 at 12.47.22 AM 06.jpeg" class="slide active">
@@ -206,18 +562,18 @@ A beautiful blend of learning, fun & creativity for kids 💫📚<br><br>
 🌟 Activity Stickers  <br><br>
 🌙 A perfect Ramadan companion for learning, playing & growing 💖</p>
 
-<a 
-  href="https://wa.me/919358437253?text=Hello%20I%20want%20to%20purchase%20my%20ramadan%20activity%20kit"
-  class="dm-btn"
-  target="_blank">
-  DM to Purchase
-</a>
+<button class="cart-btn"
+onclick="addToCart('🌙 My Ramadan Activity Kit ✨',300,'combos/WhatsApp Image 2026-02-10 at 12.47.22 AM 06.jpeg')">
+🛒 Add to Cart
+</button>
 
 </div>
 
 
     
-    <div class="card scroll-effect">
+    <div class="card scroll-effect"
+     data-name="🌟 Zodiac Story Combo 🌟"
+     data-price="220₹">
 
   <div class="slider">
   <img src="combos\ChatGPT Image Feb 10, 2026, 11_13_18 AM.png" class="slide active">
@@ -249,12 +605,11 @@ A beautiful blend of learning, fun & creativity for kids 💫📚<br><br>
 🌙 Available for all zodiac signs <br><br>
 
 🎁 Perfect for gifting or treating yourself 💖</p>
-<a 
-  href="https://wa.me/917297812253?text=Hello%20I%20want%20to%20purchase%20zodiac%20story%20combo"
-  class="dm-btn"
-  target="_blank">
-  DM to Purchase
-</a>
+
+<button class="cart-btn"
+onclick="addToCart('🌟 Zodiac Story Combo 🌟',220,'combos/ChatGPT Image Feb 10, 2026, 11_13_18 AM.png')">
+🛒 Add to Cart
+</button>
 
 </div>
 
@@ -278,8 +633,34 @@ A beautiful blend of learning, fun & creativity for kids 💫📚<br><br>
   
 
   
-  <footer>
-© 2026 HJ-Artstore • Crafted with love • DM for queries
+<footer class="art-footer">
+
+  <!-- Floating Art Elements -->
+  <div class="floating art1">🖌</div>
+  <div class="floating art2">🎨</div>
+  <div class="floating art3">✨</div>
+  <div class="floating art4">🖍</div>
+  <div class="floating art5">🌈</div>
+
+  <div class="footer-content">
+    <h2>HJ-Artstore 🎨</h2>
+
+    <p class="quote" id="artQuote">
+      “Art speaks where words are unable to explain.”
+    </p>
+
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="drawing-books.html">Drawing Books</a>
+      <a href="arabic-diaries.html">Arabic Diaries</a>
+      <a href="cart.html">Cart 🛒</a>
+    </div>
+
+    <p class="copyright">
+      © 2026 HJ-Artstore • Made with 🎨 & 💛 in India
+    </p>
+  </div>
+
 </footer>
 
 <script>
@@ -349,6 +730,169 @@ function revealOnScroll(){
 window.addEventListener('scroll', revealOnScroll);
 window.addEventListener('load', revealOnScroll);
 </script>
+<script>
 
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+function saveCart(){
+  localStorage.setItem("cart", JSON.stringify(cart));
+  updateCartCount();
+}
+
+function addToCart(name, price, image){
+
+  const existing = cart.find(item => item.name === name);
+
+  if(existing){
+    existing.qty += 1;
+  } else {
+    cart.push({
+      name,
+      price,
+      image,
+      qty:1
+    });
+  }
+
+  saveCart();
+  openCartDrawer();
+}
+
+function removeItem(index){
+  cart.splice(index,1);
+  saveCart();
+  renderCart();
+}
+
+function changeQty(index, amount){
+  cart[index].qty += amount;
+
+  if(cart[index].qty <= 0){
+    removeItem(index);
+    return;
+  }
+
+  saveCart();
+  renderCart();
+}
+
+function updateCartCount(){
+  const count = cart.reduce((total,item)=> total + item.qty,0);
+  const counter = document.getElementById("cart-count");
+  if(counter) counter.innerText = count;
+}
+
+updateCartCount();
+
+function openCartDrawer(){
+  document.getElementById("cartDrawer").classList.add("active");
+  renderCart();
+}
+
+function closeCartDrawer(){
+  document.getElementById("cartDrawer").classList.remove("active");
+}
+
+function renderCart(){
+
+  const container = document.getElementById("drawerItems");
+  const totalBox = document.getElementById("drawerTotal");
+  container.innerHTML = "";
+
+  let total = 0;
+
+  cart.forEach((item,index)=>{
+
+    total += item.price * item.qty;
+
+    container.innerHTML += `
+      <div class="drawer-item">
+        <img src="${item.image}">
+        <div>
+          <div>${item.name}</div>
+          <div>₹${item.price}</div>
+          <div class="qty-control">
+            <button onclick="changeQty(${index},-1)">-</button>
+            ${item.qty}
+            <button onclick="changeQty(${index},1)">+</button>
+          </div>
+         <button class="bin-btn"
+onclick="removeItem(${index})">
+<svg xmlns="http://www.w3.org/2000/svg"
+width="16" height="16"
+fill="currentColor"
+viewBox="0 0 16 16">
+<path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm4 0A.5.5 0 0 1 10 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5z"/>
+<path fill-rule="evenodd"
+d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1 0-2H5V1a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v1h2.5a1 1 0 0 1 1 1z"/>
+</svg>
+</button>
+        </div>
+      </div>
+    `;
+  });
+
+  totalBox.innerText = "Total: ₹" + total;
+}
+
+function checkout(){
+  alert("Redirecting to payment...");
+  window.location.href = "YOUR_PAYMENT_LINK";
+}
+</script>
+
+<div id="cartDrawer" class="cart-drawer">
+  <div class="cart-header">
+    <h3>Your Cart</h3>
+    <span onclick="closeCartDrawer()">✕</span>
+  </div>
+  <div id="drawerItems"></div>
+  <div class="drawer-footer">
+    <div id="drawerTotal"></div>
+    <button onclick="checkout()" class="checkout-btn">
+      Checkout
+    </button>
+  </div>
+  <script>
+const quotes = [
+  "Art speaks where words are unable to explain.",
+  "Creativity takes courage.",
+  "Every artist was first an amateur.",
+  "A diary is a canvas of your soul.",
+  "Art is not what you see, but what you make others see."
+];
+
+let index = 0;
+const quoteElement = document.getElementById("artQuote");
+
+setInterval(() => {
+  quoteElement.style.opacity = 0;
+
+  setTimeout(() => {
+    index = (index + 1) % quotes.length;
+    quoteElement.textContent = `"${quotes[index]}"`;
+    quoteElement.style.opacity = 1;
+  }, 500);
+
+}, 4000);
+</script>
+<script>
+document.getElementById("searchInput").addEventListener("keyup", function() {
+
+  let filter = this.value.toLowerCase();
+  let products = document.querySelectorAll(".card");
+
+  products.forEach(function(card) {
+    let name = card.getAttribute("data-name").toLowerCase();
+
+    if(name.includes(filter)) {
+      card.style.display = "block";
+    } else {
+      card.style.display = "none";
+    }
+  });
+
+});
+</script>
 </body>
 </html>

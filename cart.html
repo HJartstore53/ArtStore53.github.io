@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Your Cart</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body{
+  margin:0;
+  font-family:Poppins, sans-serif;
+  background:linear-gradient(180deg,#f7ecd4,#f1deb3);
+  color:#3b2f2f;
+}
+
+h1{
+  text-align:center;
+  padding:2rem 1rem 1rem;
+  font-family:Playfair Display, serif;
+}
+
+.cart-container{
+  max-width:800px;
+  margin:auto;
+  padding:1.5rem;
+}
+
+.cart-item{
+  display:flex;
+  gap:15px;
+  background:#fff7e6;
+  border-radius:20px;
+  padding:1rem;
+  margin-bottom:1rem;
+  box-shadow:0 10px 25px rgba(0,0,0,.08);
+  align-items:center;
+}
+
+.cart-item img{
+  width:100px;
+  height:100px;
+  object-fit:cover;
+  border-radius:15px;
+}
+
+.item-details{
+  flex:1;
+}
+
+.item-name{
+  font-weight:600;
+  margin-bottom:5px;
+}
+
+.qty-control{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  margin-top:8px;
+}
+
+.qty-control button{
+  border:none;
+  background:#c89b3c;
+  color:#fff;
+  padding:5px 10px;
+  border-radius:6px;
+  cursor:pointer;
+}
+
+.bin-btn{
+  background:none;
+  border:none;
+  cursor:pointer;
+  font-size:18px;
+  color:#a94442;
+  transition:.3s ease;
+}
+
+.bin-btn:hover{
+  transform:scale(1.2);
+  color:#c89b3c;
+}
+
+.summary{
+  background:#fff7e6;
+  border-radius:20px;
+  padding:1.2rem;
+  margin-top:1.5rem;
+  box-shadow:0 10px 25px rgba(0,0,0,.08);
+}
+
+.total{
+  font-size:1.2rem;
+  font-weight:600;
+  margin-bottom:1rem;
+}
+
+.checkout-btn{
+  width:100%;
+  padding:.8rem;
+  border-radius:50px;
+  border:none;
+  background:linear-gradient(135deg,#c89b3c,#a67c2e);
+  color:#fff;
+  font-weight:600;
+  cursor:pointer;
+  transition:.3s ease;
+}
+
+.checkout-btn:hover{
+  transform:translateY(-3px);
+  box-shadow:0 10px 20px rgba(200,155,60,.4);
+}
+
+.empty{
+  text-align:center;
+  margin-top:3rem;
+  opacity:.7;
+}
+
+.art-footer{
+  position:relative;
+  background:#3b2f2f;
+  color:#fff;
+  padding:3rem 1rem;
+  text-align:center;
+  margin-top:3rem;
+  overflow:hidden;
+}
+
+/* Watercolor glow background */
+.art-footer::before{
+  content:"";
+  position:absolute;
+  width:100%;
+  height:100%;
+  background:
+  radial-gradient(circle at 15% 20%, rgba(200,155,60,.25), transparent 40%),
+  radial-gradient(circle at 85% 70%, rgba(255,255,255,.08), transparent 40%);
+  top:0;
+  left:0;
+  z-index:0;
+}
+
+.footer-content{
+  position:relative;
+  z-index:2;
+}
+
+/* Floating Base Style */
+.floating{
+  position:absolute;
+  font-size:26px;
+  opacity:.7;
+  animation:floatUp 12s linear infinite;
+}
+
+/* Different positions & delays */
+.art1{ left:10%; animation-delay:0s; }
+.art2{ left:30%; animation-delay:3s; }
+.art3{ left:50%; animation-delay:6s; }
+.art4{ left:70%; animation-delay:2s; }
+.art5{ left:85%; animation-delay:5s; }
+
+@keyframes floatUp{
+  0%{
+    transform:translateY(100px) rotate(0deg);
+    opacity:0;
+  }
+  20%{ opacity:.8; }
+  50%{ transform:translateY(-50px) rotate(10deg); }
+  100%{
+    transform:translateY(-200px) rotate(-10deg);
+    opacity:0;
+  }
+}
+
+/* Quote */
+.quote{
+  font-style:italic;
+  margin-bottom:1.5rem;
+  min-height:24px;
+  transition:opacity .5s ease;
+}
+
+.footer-links{
+  display:flex;
+  justify-content:center;
+  gap:18px;
+  flex-wrap:wrap;
+  margin-top:1rem;
+}
+
+.footer-links a{
+  position:relative;
+  padding:8px 16px;
+  border-radius:25px;
+  font-size:.85rem;
+  text-decoration:none;
+  color:#fff;
+  background:rgba(255,255,255,0.08);
+  backdrop-filter:blur(4px);
+  transition:all .3s ease;
+  overflow:hidden;
+}
+
+/* Soft glow hover */
+.footer-links a:hover{
+  background:#c89b3c;
+  color:#3b2f2f;
+  transform:translateY(-3px);
+  box-shadow:0 5px 15px rgba(200,155,60,.4);
+}
+
+/* Subtle shine effect */
+.footer-links a::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:-100%;
+  width:100%;
+  height:100%;
+  background:linear-gradient(
+    120deg,
+    transparent,
+    rgba(255,255,255,.4),
+    transparent
+  );
+  transition:.5s;
+}
+
+.footer-links a:hover::before{
+  left:100%;
+}
+</style>
+</head>
+
+<body>
+
+<h1>🛒 Your Cart</h1>
+
+<div class="cart-container">
+  <div id="cartItems"></div>
+
+  <div class="summary" id="summaryBox" style="display:none;">
+    <div class="total" id="total"></div>
+
+    <button class="checkout-btn" onclick="checkout()">
+      Proceed to Payment
+    </button>
+
+    <button onclick="window.location.href='index.html'"
+    class="checkout-btn"
+    style="margin-top:10px;background:#3b2f2f;">
+      Continue Shopping
+    </button>
+  </div>
+
+  <div class="empty" id="emptyMessage">
+    Your cart is empty 🧺
+  </div>
+</div>
+
+<footer class="art-footer">
+
+  <!-- Floating Art Elements -->
+  <div class="floating art1">🖌</div>
+  <div class="floating art2">🎨</div>
+  <div class="floating art3">✨</div>
+  <div class="floating art4">🖍</div>
+  <div class="floating art5">🌈</div>
+
+  <div class="footer-content">
+    <h2>HJ-Artstore 🎨</h2>
+
+    <p class="quote" id="artQuote">
+      “Art speaks where words are unable to explain.”
+    </p>
+
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="drawing-books.html">Drawing Books</a>
+      <a href="arabic-diaries.html">Arabic Diaries</a>
+      <a href="cart.html">Cart 🛒</a>
+    </div>
+
+    <p class="copyright">
+      © 2026 HJ-Artstore • Made with 🎨 & 💛 in India
+    </p>
+  </div>
+
+</footer>
+
+<script>
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+let container = document.getElementById("cartItems");
+let total = 0;
+
+function renderCart(){
+  container.innerHTML = "";
+  total = 0;
+
+  if(cart.length === 0){
+    document.getElementById("emptyMessage").style.display = "block";
+    document.getElementById("summaryBox").style.display = "none";
+    return;
+  }
+
+  document.getElementById("emptyMessage").style.display = "none";
+  document.getElementById("summaryBox").style.display = "block";
+
+  cart.forEach((item,index)=>{
+    total += item.price * item.qty;
+
+    container.innerHTML += `
+      <div class="cart-item">
+        <img src="${item.image}">
+        <div class="item-details">
+          <div class="item-name">${item.name}</div>
+          <div>₹${item.price}</div>
+
+          <div class="qty-control">
+            <button onclick="changeQty(${index},-1)">-</button>
+            ${item.qty}
+            <button onclick="changeQty(${index},1)">+</button>
+          </div>
+        </div>
+
+        <button class="bin-btn"
+        onclick="removeItem(${index})">
+        🗑
+        </button>
+      </div>
+    `;
+  });
+
+  document.getElementById("total").innerText =
+  "Total: ₹" + total;
+}
+
+function changeQty(index, amount){
+  cart[index].qty += amount;
+
+  if(cart[index].qty <= 0){
+    cart.splice(index,1);
+  }
+
+  localStorage.setItem("cart", JSON.stringify(cart));
+  renderCart();
+}
+
+function removeItem(index){
+  cart.splice(index,1);
+  localStorage.setItem("cart", JSON.stringify(cart));
+  renderCart();
+}
+
+function checkout(){
+  alert("Redirecting to payment...");
+  window.location.href = "YOUR_PAYMENT_LINK";
+}
+
+renderCart();
+</script>
+<script>
+const quotes = [
+  "Art speaks where words are unable to explain.",
+  "Creativity takes courage.",
+  "Every artist was first an amateur.",
+  "A diary is a canvas of your soul.",
+  "Art is not what you see, but what you make others see."
+];
+
+let index = 0;
+const quoteElement = document.getElementById("artQuote");
+
+setInterval(() => {
+  quoteElement.style.opacity = 0;
+
+  setTimeout(() => {
+    index = (index + 1) % quotes.length;
+    quoteElement.textContent = `"${quotes[index]}"`;
+    quoteElement.style.opacity = 1;
+  }, 500);
+
+}, 4000);
+</script>
+</body>
+</html>

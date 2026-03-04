@@ -172,13 +172,7 @@ header.loaded h1{
 
 
 
-    footer{
-      background:#3b2f2f;
-      color:#fff;
-      padding:1.5rem;
-      text-align:center;
-      font-size:.85rem;
-    }
+    
 
     /* Dark mode styles */
     body.dark{
@@ -586,7 +580,141 @@ footer{
   animation: none !important;
 }
 
-  </style>
+
+.cart-icon{
+  position:fixed;
+  top:20px;
+  right:20px;
+  font-size:22px;
+  cursor:pointer;
+  z-index:999;
+}
+
+#cart-count{
+  background:#c89b3c;
+  color:#fff;
+  font-size:12px;
+  padding:3px 7px;
+  border-radius:50%;
+  position:absolute;
+  top:-8px;
+  right:-12px;
+}
+
+.art-footer{
+  position:relative;
+  background:#3b2f2f;
+  color:#fff;
+  padding:3rem 1rem;
+  text-align:center;
+  margin-top:3rem;
+  overflow:hidden;
+}
+
+/* Watercolor glow background */
+.art-footer::before{
+  content:"";
+  position:absolute;
+  width:100%;
+  height:100%;
+  background:
+  radial-gradient(circle at 15% 20%, rgba(200,155,60,.25), transparent 40%),
+  radial-gradient(circle at 85% 70%, rgba(255,255,255,.08), transparent 40%);
+  top:0;
+  left:0;
+  z-index:0;
+}
+
+.footer-content{
+  position:relative;
+  z-index:2;
+}
+
+/* Floating Base Style */
+.floating{
+  position:absolute;
+  font-size:26px;
+  opacity:.7;
+  animation:floatUp 12s linear infinite;
+}
+
+/* Different positions & delays */
+.art1{ left:10%; animation-delay:0s; }
+.art2{ left:30%; animation-delay:3s; }
+.art3{ left:50%; animation-delay:6s; }
+.art4{ left:70%; animation-delay:2s; }
+.art5{ left:85%; animation-delay:5s; }
+
+@keyframes floatUp{
+  0%{
+    transform:translateY(100px) rotate(0deg);
+    opacity:0;
+  }
+  20%{ opacity:.8; }
+  50%{ transform:translateY(-50px) rotate(10deg); }
+  100%{
+    transform:translateY(-200px) rotate(-10deg);
+    opacity:0;
+  }
+}
+
+/* Quote */
+.quote{
+  font-style:italic;
+  margin-bottom:1.5rem;
+  min-height:24px;
+  transition:opacity .5s ease;
+}
+.footer-links{
+  display:flex;
+  justify-content:center;
+  gap:18px;
+  flex-wrap:wrap;
+  margin-top:1rem;
+}
+
+.footer-links a{
+  position:relative;
+  padding:8px 16px;
+  border-radius:25px;
+  font-size:.85rem;
+  text-decoration:none;
+  color:#fff;
+  background:rgba(255,255,255,0.08);
+  backdrop-filter:blur(4px);
+  transition:all .3s ease;
+  overflow:hidden;
+}
+
+/* Soft glow hover */
+.footer-links a:hover{
+  background:#c89b3c;
+  color:#3b2f2f;
+  transform:translateY(-3px);
+  box-shadow:0 5px 15px rgba(200,155,60,.4);
+}
+
+/* Subtle shine effect */
+.footer-links a::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:-100%;
+  width:100%;
+  height:100%;
+  background:linear-gradient(
+    120deg,
+    transparent,
+    rgba(255,255,255,.4),
+    transparent
+  );
+  transition:.5s;
+}
+
+.footer-links a:hover::before{
+  left:100%;
+}
+</style>
 </head>
 
 
@@ -601,7 +729,15 @@ footer{
 </script>
 
 <header>
-     <div id="progress"></div>
+
+
+  <div class="cart-icon" onclick="window.location.href='cart.html'">
+    🛒
+    <span id="cart-count">0</span>
+  </div>
+
+
+
 
 
 
@@ -661,7 +797,7 @@ footer{
 </div>
 
 
-  <div class="scroll-indicator">↓</div>
+ 
 </header>
 
 <section>
@@ -732,9 +868,34 @@ footer{
 
 
 </section>
+<footer class="art-footer">
 
-<footer>
- © 2026 HJ-Artstore • Crafted with love • DM for queries
+  <!-- Floating Art Elements -->
+  <div class="floating art1">🖌</div>
+  <div class="floating art2">🎨</div>
+  <div class="floating art3">✨</div>
+  <div class="floating art4">🖍</div>
+  <div class="floating art5">🌈</div>
+
+  <div class="footer-content">
+    <h2>HJ-Artstore 🎨</h2>
+
+    <p class="quote" id="artQuote">
+      “Art speaks where words are unable to explain.”
+    </p>
+
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="drawing-books.html">Drawing Books</a>
+      <a href="arabic-diaries.html">Arabic Diaries</a>
+      <a href="cart.html">Cart 🛒</a>
+    </div>
+
+    <p class="copyright">
+      © 2026 HJ-Artstore • Made with 🎨 & 💛 in India
+    </p>
+  </div>
+
 </footer>
 
 <script>
@@ -890,6 +1051,29 @@ function openBrandPopup(brand){
 function closeBrand(){
   document.getElementById('brandPopup').style.display = 'none';
 }
+</script>
+<script>
+const quotes = [
+  "Art speaks where words are unable to explain.",
+  "Creativity takes courage.",
+  "Every artist was first an amateur.",
+  "A diary is a canvas of your soul.",
+  "Art is not what you see, but what you make others see."
+];
+
+let index = 0;
+const quoteElement = document.getElementById("artQuote");
+
+setInterval(() => {
+  quoteElement.style.opacity = 0;
+
+  setTimeout(() => {
+    index = (index + 1) % quotes.length;
+    quoteElement.textContent = `"${quotes[index]}"`;
+    quoteElement.style.opacity = 1;
+  }, 500);
+
+}, 4000);
 </script>
 </body>
 </html>
