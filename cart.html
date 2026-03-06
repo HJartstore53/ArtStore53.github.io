@@ -355,12 +355,49 @@ function removeItem(index){
   localStorage.setItem("cart", JSON.stringify(cart));
   renderCart();
 }
-
 function checkout(){
-  alert("Redirecting to payment...");
-  window.location.href = "YOUR_PAYMENT_LINK";
-}
 
+let name = prompt("Enter your Name:");
+if(!name) return;
+
+let phoneCustomer = prompt("Enter your Phone Number:");
+if(!phoneCustomer) return;
+
+let address = prompt("Enter your Address:");
+if(!address) return;
+
+let phone = "919358437253"; // your WhatsApp number
+
+let message = "🛒 *NEW ORDER*\n\n";
+
+message += "👤 Name: " + name + "\n";
+message += "📞 Phone: " + phoneCustomer + "\n";
+message += "📍 Address: " + address + "\n\n";
+
+message += "📦 *Order Details*\n\n";
+
+let totalAmount = 0;
+
+cart.forEach(item => {
+
+  let subtotal = item.price * item.qty;
+  totalAmount += subtotal;
+
+  message += "• " + item.name + "\n";
+  message += "Qty: " + item.qty + "\n";
+  message += "Price: ₹" + item.price + "\n";
+  message += "Subtotal: ₹" + subtotal + "\n\n";
+
+});
+
+message += "💰 *Total Amount: ₹" + totalAmount + "*";
+
+let url = "https://wa.me/919358437253" + phone + "?text=" + encodeURIComponent(message);
+
+window.open(url, "_blank");
+
+localStorage.removeItem("cart");
+}
 renderCart();
 </script>
 <script>
