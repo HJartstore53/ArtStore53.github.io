@@ -279,6 +279,19 @@ h1{
   cursor:pointer;
 }
 
+button[type="submit"] {
+  background-color: #000;   /* your button color */
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  font-size: 16px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  opacity: 0.9;
+}
 </style>
 </head>
 
@@ -404,54 +417,56 @@ function removeItem(index){
 }
 
 
-function sendOrder(){
+function sendOrder(event){
+
+event.preventDefault(); // VERY IMPORTANT
 
 let name = document.getElementById("custName").value;
 let phoneCustomer = document.getElementById("custPhone").value;
 let address = document.getElementById("custAddress").value;
 
-if(!name || !phoneCustomer || !address){
-alert("Please fill all details");
-return;
-}
+let orderID = "ORD" + Math.floor(100000 + Math.random()*900000);
 
-let phone = "919358437253";
-
-let message = "🧾 *HJ-Artstore Order Bill*\n";
-message += "-----------------------------\n\n";
-
-message += "🕒 Order Time: " + orderTime + "\n\n";
-
-message += "👤 Name: " + name + "\n";
-message += "📞 Phone: " + phoneCustomer + "\n";
-message += "📍 Address: " + address + "\n\n";
-
-message += "📦 *Items Ordered*\n";
-message += "-----------------------------\n";
+let now = new Date();
+let date = now.toLocaleDateString();
+let time = now.toLocaleTimeString();
 
 let totalAmount = 0;
 
-cart.forEach(item => {
+let message = `🧾 *HJ Artstore Order*
 
+🆔 Order ID: ${orderID}
+📅 Date: ${date}
+⏰ Time: ${time}
+
+👤 Name: ${name}
+📞 Phone: ${phoneCustomer}
+📍 Address: ${address}
+
+📦 *Order Details*
+`;
+
+cart.forEach(item=>{
 let subtotal = item.price * item.qty;
 totalAmount += subtotal;
 
-message += item.name + "\n";
-message += "Qty: " + item.qty + "  |  ₹" + item.price + "\n";
-message += "Subtotal: ₹" + subtotal + "\n";
-message += "-----------------------------\n";
+message += `• ${item.name}
+Qty: ${item.qty}
+Price: ₹${item.price}
+Subtotal: ₹${subtotal}
 
+`;
 });
 
-message += "\n💰 *Total Amount: ₹" + totalAmount + "*\n";
-message += "-----------------------------\n";
-message += "Thank you for shopping with HJ-Artstore 🎨";
+message += `💰 *Total Amount: ₹${totalAmount}*
 
-let url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+🙏 Thank you for purchasing from *HJ Artstore!*`;
+
+let phone = "919358437253";
+
+let url = "https://wa.me/" + phone + "?text=" + encodeURIComponent(message);
 
 window.location.href = url;
-
-localStorage.removeItem("cart");
 
 }
 renderCart();
@@ -495,15 +510,15 @@ document.getElementById("customerPopup").style.display = "none";
   <div class="popup-content">
     <h3>Enter Your Details</h3>
 
-    <input id="custName" type="text" placeholder="Your Name">
+    <form onsubmit="sendOrder(event)">
 
-    <input id="custPhone" type="tel" placeholder="Phone Number">
+<input type="text" id="custName" placeholder="Name" required>
+<input type="text" id="custPhone" placeholder="Phone" required>
+<textarea id="custAddress" placeholder="Address" required></textarea>
 
-    <textarea id="custAddress" placeholder="Full Address"></textarea>
+<button type="submit">Submit Order</button>
 
-    <button onclick="sendOrder()" class="checkout-btn">
-      Submit Order
-    </button>
+</form>
 
     <button onclick="closePopup()" class="close-btn">
       Cancel
