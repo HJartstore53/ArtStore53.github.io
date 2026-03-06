@@ -98,7 +98,7 @@ h1{
 
 .checkout-btn{
   width:100%;
-  padding:.8rem;
+  padding:.6rem;
   border-radius:50px;
   border:none;
   background:linear-gradient(135deg,#c89b3c,#a67c2e);
@@ -392,7 +392,7 @@ cart.forEach(item => {
 
 message += "💰 *Total Amount: ₹" + totalAmount + "*";
 
-let url = "https://wa.me/919358437253" + phone + "?text=" + encodeURIComponent(message);
+let url = "https://wa.me/" + phone + "?text=" + encodeURIComponent(message);
 
 window.open(url, "_blank");
 
